@@ -19,7 +19,16 @@ export default defineConfig([
     files: ["**/*.{js,mjs,cjs,ts}"],
     rules: {
       indent: ["tab"], // Usando tabulação para indentação
-      "max-len": ["error", { code: 80 }],
+      "max-len": ["error", { code: 60 }],
+      "object-curly-newline": [
+        "error",
+        {
+          ObjectExpression: { minProperties: 6, multiline: true },
+          ObjectPattern: { minProperties: 6, multiline: true },
+          ImportDeclaration: { minProperties: 6, multiline: true },
+          ExportDeclaration: { minProperties: 6, multiline: true },
+        },
+      ],
     },
   },
 ]);
