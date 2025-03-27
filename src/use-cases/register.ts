@@ -16,33 +16,49 @@ interface RegisterUseCaseRequest {
     longitude: number
 }
 
-export async function registerUseCase({ name, author_name, email, whatsapp, password, cep, state, city, neighborhood, street, latitude, longitude } : RegisterUseCaseRequest ) {
-    const password_hash = await hash(password, 6)
+export class RegisterUseCase {
+    constructor (private orgsRepository: any) {}
 
-    const orgWithSameEmail = await prisma.org.findUnique({
-        where: {
-            email
-        }
-    })
+    async execute({ 
+        name, 
+        author_name, 
+        email, 
+        whatsapp, 
+        password, 
+        cep, 
+        state, 
+        city, 
+        neighborhood, 
+        street, 
+        latitude, 
+        longitude  } : RegisterUseCaseRequest ) {
 
-    if (orgWithSameEmail) {
-        throw new Error('E-mail already exists.')
-    }
-    
-    await prisma.org.create({
-        data: {
-            name, 
-            author_name, 
-            email, 
-            whatsapp, 
-            password: password_hash, 
-            cep, 
-            state, 
-            city, 
-            neighborhood, 
-            street, 
-            latitude, 
-            longitude 
+            const password_hash = await hash(password, 6)
+        
+            const orgWithSameEmail = await prisma.org.findUnique({
+                where: {
+                    email
+                }
+            })
+        
+            if (orgWithSameEmail) {
+                throw new Error('E-mail already exists.')
+            }
+            
+            this.orgsRepository.create({
+                    name, 
+                    author_name, 
+                    email, 
+                    whatsapp, 
+                    password: password_hash, 
+                    cep, 
+                    state, 
+                    city, 
+                    neighborhood, 
+                    street, 
+                    latitude, 
+                    longitude         
+            })
         }
-    })
+
 }
