@@ -4,7 +4,7 @@ FIND A FRIEND APP
 
 ## RF (Requisitos funcionais | Regras da aplicação)
 
-- [ ] Cadastrar um pet
+- [x] Cadastrar um pet
 - [ ] Listar todos os pets disponíveis para adoção em uma cidade
 - [ ] Filtrar pets por suas características
 - [ ] Visualizar detalhes de um pet para adoção
