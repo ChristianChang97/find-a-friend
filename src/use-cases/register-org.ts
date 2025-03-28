@@ -16,7 +16,7 @@ interface RegisterUseCaseRequest {
     longitude: number
 }
 
-export class RegisterUseCase {
+export class RegisterOrgUseCase {
     constructor (private orgsRepository: any) {}
 
     async execute({ 

@@ -1,8 +1,11 @@
 import { FastifyInstance } from "fastify";
-import { register } from "./controllers/register";
+import { registerOrg } from "./controllers/register-org";
+import { registerPet } from "./controllers/register-pet";
 
 export async function appRoutes(app: FastifyInstance) {
 
     // # 
-    app.post('/org', register)
+    app.post('/org', registerOrg)
+
+    app.post('/pet', registerPet)
 }

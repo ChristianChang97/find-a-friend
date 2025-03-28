@@ -8,7 +8,7 @@ FIND A FRIEND APP
 - [ ] Listar todos os pets disponíveis para adoção em uma cidade
 - [ ] Filtrar pets por suas características
 - [ ] Visualizar detalhes de um pet para adoção
-- [ ] Cadastrar como uma ORG
+- [x] Cadastrar como uma ORG
 - [ ] Logar como uma ORG
 
 ## RN (Regras de negócio)
