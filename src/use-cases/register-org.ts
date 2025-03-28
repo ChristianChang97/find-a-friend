@@ -1,4 +1,3 @@
-import { prisma } from "@/lib/prisma"
 import { hash } from "bcryptjs"
 
 interface RegisterUseCaseRequest {
@@ -35,11 +34,7 @@ export class RegisterOrgUseCase {
 
             const password_hash = await hash(password, 6)
         
-            const orgWithSameEmail = await prisma.org.findUnique({
-                where: {
-                    email
-                }
-            })
+            const orgWithSameEmail = await this.orgsRepository.findByEmail(email)
         
             if (orgWithSameEmail) {
                 throw new Error('E-mail already exists.')
