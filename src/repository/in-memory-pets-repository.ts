@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 
-export class InMemoryOrgsRepository {
+export class InMemoryPetsRepository {
     public pets: any[] = []
 
     async create(data: Prisma.PetCreateInput) {
