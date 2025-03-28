@@ -41,7 +41,7 @@ export class RegisterOrgUseCase {
                 throw new OrgAlreadyExistsError()
             }
             
-            this.orgsRepository.create({
+            const org = await this.orgsRepository.create({
                     name, 
                     author_name, 
                     email, 
@@ -55,6 +55,10 @@ export class RegisterOrgUseCase {
                     latitude, 
                     longitude         
             })
+
+            return {
+                org
+            }
         }
 
 }

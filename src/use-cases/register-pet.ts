@@ -20,7 +20,7 @@ export class RegisterPetUseCase {
         environment, 
         org_id   } : RegisterUseCaseRequest ) {
             
-            this.petsRepository.create({
+        const pet = await this.petsRepository.create({
                 name, 
                 about, 
                 age,
@@ -29,6 +29,9 @@ export class RegisterPetUseCase {
                 environment,
                 org_id        
             })
-        }
 
+            return {
+                pet
+            }
+        }
 }
