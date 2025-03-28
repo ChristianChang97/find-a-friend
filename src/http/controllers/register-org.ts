@@ -52,7 +52,7 @@ export async function registerOrg(request: FastifyRequest, reply: FastifyReply) 
             return reply.status(409).send({ message: err.message })
         }
 
-        return reply.status(409).send()
+        throw err
     }
 
     return reply.status(201).send()
