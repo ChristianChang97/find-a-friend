@@ -4,14 +4,18 @@ import { InMemoryOrgsRepository } from '@/repository/in-memory-orgs-repository'
 import { AuthenticateOrgUseCase } from '@/use-cases/authenticate-org'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 
+let orgsRepository: InMemoryOrgsRepository
+let sut: AuthenticateOrgUseCase
+
 describe('Authenticate Org Use Case', () => {
+    orgsRepository = new InMemoryOrgsRepository()
+    // System under Test
+    sut = new AuthenticateOrgUseCase(orgsRepository)
+
     it('should be able to authenticate', async () => {
 
         // Aqui a técnica consiste em criar uma abstração da camada repository, de modo que esse teste não bata no banco de dados. 
         // É uma forma de fazer testes de unidade rapidamente sem ter que configurar banco e etc
-        const orgsRepository = new InMemoryOrgsRepository()
-        // System under Test
-        const sut = new AuthenticateOrgUseCase(orgsRepository)
     
         await orgsRepository.create({
             name: 'Dog Hero Org',
@@ -39,12 +43,10 @@ describe('Authenticate Org Use Case', () => {
 
 
     it('should not be able to authenticate with wrong email', async () => {
-        const orgsRepository = new InMemoryOrgsRepository()
-        const sut = new AuthenticateOrgUseCase(orgsRepository)
 
         await expect(() => 
             sut.execute({
-                email: 'dogheroorg@example.com',
+                email: 'testerror@example.com',
                 password: '123456'
             }),
         ).rejects.toBeInstanceOf(InvalidCredentialsError)
@@ -52,8 +54,7 @@ describe('Authenticate Org Use Case', () => {
 
 
     it('should not be able to authenticate with wrong password', async () => {
-        const orgsRepository = new InMemoryOrgsRepository()
-        const sut = new AuthenticateOrgUseCase(orgsRepository)
+
 
         await orgsRepository.create({
             name: 'Dog Hero Org',
