@@ -1,5 +1,6 @@
 import { PrismaOrgsRepository } from "@/repository/prisma/prisma-orgs-repository"
 import { OrgAlreadyExistsError } from "@/use-cases/errors/org-already-exists-error"
+import { makeRegisterOrgUseCase } from "@/use-cases/factories/make-register-org-use-case"
 import { RegisterOrgUseCase } from "@/use-cases/register-org"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
@@ -41,8 +42,8 @@ export async function registerOrg(request: FastifyRequest, reply: FastifyReply) 
     const { name, author_name, email, whatsapp, password, cep, state, city, neighborhood, street, latitude, longitude } = registerBodySchema.parse(request.body)
 
     try {
-        const orgsRepository = new PrismaOrgsRepository()
-        const registerUseCase = new RegisterOrgUseCase(orgsRepository)
+        // Factory Pattern
+        const registerUseCase = makeRegisterOrgUseCase()
 
         await registerUseCase.execute({
             name, author_name, email, whatsapp, password, cep, state, city, neighborhood, street, latitude, longitude
