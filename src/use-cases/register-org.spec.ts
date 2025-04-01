@@ -54,7 +54,7 @@ describe('Register Org Use Case', () => {
             longitude: -46.692164  
         })
         
-        expect(() => 
+        await expect(() => 
             registerOrgUseCase.execute({
                 name: "test 01", 
                 author_name: "test", 
