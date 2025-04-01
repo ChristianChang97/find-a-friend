@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Pet, Prisma } from "@prisma/client";
 import { PetsRepository } from "../pets-repository";
 
 export class PrismaPetsRepository implements PetsRepository {
@@ -9,5 +9,9 @@ export class PrismaPetsRepository implements PetsRepository {
         })
 
         return pet
+    }
+
+    findById(id: string): Promise<Pet | null> {
+        throw new Error("Method not implemented.")
     }
 }
