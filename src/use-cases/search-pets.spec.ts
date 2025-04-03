@@ -41,9 +41,7 @@ describe('Search Pets Use Case', () => {
         const org = await orgsRepository.create(makeOrg())
     
         await petsRepository.create(makePet({ org_id: org.id, age: '2' }))
-        await petsRepository.create(makePet({ org_id: org.id, age: '2' }))
-    
-        await petsRepository.create(makePet({ org_id: org.id }))
+        await petsRepository.create(makePet({ org_id: org.id, age: '2' }))            
     
         const { pets } = await sut.execute({
             city: org.city,
@@ -58,9 +56,7 @@ describe('Search Pets Use Case', () => {
         const org = await orgsRepository.create(makeOrg())
     
         await petsRepository.create(makePet({ org_id: org.id, size: 'medium' }))
-        await petsRepository.create(makePet({ org_id: org.id, size: 'medium' }))
-    
-        await petsRepository.create(makePet({ org_id: org.id }))
+        await petsRepository.create(makePet({ org_id: org.id, size: 'medium' }))            
     
         const { pets } = await sut.execute({
             city: org.city,
@@ -68,6 +64,36 @@ describe('Search Pets Use Case', () => {
         })
 
         expect(pets).toHaveLength(2)
+    })
+
+
+    it('should be able to search pets by city and energy_level', async () => {
+        const org = await orgsRepository.create(makeOrg())
+    
+        await petsRepository.create(makePet({ org_id: org.id, energy_level: 'low' }))
+        await petsRepository.create(makePet({ org_id: org.id, energy_level: 'high' }))            
+    
+        const { pets } = await sut.execute({
+            city: org.city,
+            energy_level: 'high',
+        })
+
+        expect(pets).toHaveLength(1)
+    })
+
+
+    it('should be able to search pets by city and environment', async () => {
+        const org = await orgsRepository.create(makeOrg())
+    
+        await petsRepository.create(makePet({ org_id: org.id, environment: 'outdoor' }))
+        await petsRepository.create(makePet({ org_id: org.id, environment: 'indoor' }))
+    
+        const { pets } = await sut.execute({
+            city: org.city,
+            environment: 'outdoor',
+        })
+
+        expect(pets).toHaveLength(1)
     })
 
 })
