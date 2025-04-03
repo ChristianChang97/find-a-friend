@@ -1,7 +1,5 @@
-import { PrismaOrgsRepository } from "@/repository/prisma/prisma-orgs-repository"
 import { OrgAlreadyExistsError } from "@/use-cases/errors/org-already-exists-error"
 import { makeRegisterOrgUseCase } from "@/use-cases/factories/make-register-org-use-case"
-import { RegisterOrgUseCase } from "@/use-cases/register-org"
 import { FastifyReply, FastifyRequest } from "fastify"
 import { z } from "zod"
 
