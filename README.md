@@ -5,7 +5,7 @@ FIND A FRIEND APP
 ## RF (Requisitos funcionais | Regras da aplicação)
 
 - [x] Cadastrar um pet
-- [ ] Listar todos os pets disponíveis para adoção em uma cidade
+- [x] Listar todos os pets disponíveis para adoção em uma cidade
 - [ ] Filtrar pets por suas características
 - [x] Visualizar detalhes de um pet para adoção
 - [x] Cadastrar como uma ORG
@@ -13,7 +13,7 @@ FIND A FRIEND APP
 
 ## RN (Regras de negócio)
 
-- [ ] Para listar os pets, obrigatoriamente precisa informar a cidade
+- [x] Para listar os pets, obrigatoriamente precisa informar a cidade
 - [x] Uma ORG deve ter endereço e número de wpp
 - [x] Um pet deve estar ligado a uma ORG
 - [ ] O usuário que quer adotar, entrará em contato com a ORG via Whatsapp
