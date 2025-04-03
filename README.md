@@ -16,8 +16,8 @@ FIND A FRIEND APP
 - [x] Para listar os pets, obrigatoriamente precisa informar a cidade
 - [x] Uma ORG deve ter endereço e número de wpp
 - [x] Um pet deve estar ligado a uma ORG
-- [ ] O usuário que quer adotar, entrará em contato com a ORG via Whatsapp
+- [x] O usuário que quer adotar, entrará em contato com a ORG via Whatsapp
 - [x] Todos os filtros, além da cidade, são opcionais
-- [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
+- [x] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
 
 ## RN (Requisitos não funcionais)
