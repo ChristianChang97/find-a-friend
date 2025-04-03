@@ -35,7 +35,6 @@ describe('Search Pets Use Case', () => {
         })
         
         expect(pets).toHaveLength(2)
-        
     })
     
     it('should be able to search pets by city and age', async () => {
@@ -52,6 +51,23 @@ describe('Search Pets Use Case', () => {
         })
 
         expect(pets).toHaveLength(2)
-
     })
+
+
+    it('should be able to search pets by city and size', async () => {
+        const org = await orgsRepository.create(makeOrg())
+    
+        await petsRepository.create(makePet({ org_id: org.id, size: 'medium' }))
+        await petsRepository.create(makePet({ org_id: org.id, size: 'medium' }))
+    
+        await petsRepository.create(makePet({ org_id: org.id }))
+    
+        const { pets } = await sut.execute({
+            city: org.city,
+            size: 'medium',
+        })
+
+        expect(pets).toHaveLength(2)
+    })
+
 })
